@@ -8,15 +8,7 @@ resource "helm_release" "dashboard" {
   repository = "https://kubernetes.github.io/dashboard/"
   chart      = "kubernetes-dashboard"
   set {
-    name  = "disableSettingsAuthorizer"
-    value = "true"
-  }
-  set {
-    name  = "enableInsecureLogin"
-    value = "true"
-  }
-  set {
-    name  = "rbac.clusterReadOnlyRole"
+    name  = "enableSkipLogin"
     value = "true"
   }
 } 
