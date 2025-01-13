@@ -203,7 +203,7 @@ ingress:
   pathType: ImplementationSpecific
   # Used to create an Ingress record.
       hosts:
-        - user-${var.dashboard_ingress}
+        - ${var.dashboard_ingress}
   # Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   # Warning! The configuration is dependant on your current k8s API version capabilities (networking.k8s.io/v1)
   # extraPaths:
@@ -221,7 +221,7 @@ ingress:
       tls: 
         - secretName: wildcard-cert
           hosts:
-          - user-${var.dashboard_ingress}
+          - ${var.dashboard_ingress}
 
 resources: {}
   # limits:
@@ -512,6 +512,5 @@ extraObjects: []
   #         objectName: cookie-secret
   #       secretName: oauth2-proxy-secrets-store
   #       type: Opaque
-
-  EOT
+EOT
 }
