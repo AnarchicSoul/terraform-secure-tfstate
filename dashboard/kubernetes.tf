@@ -29,5 +29,5 @@ data "kubernetes_secret" "oauth2_proxy_token" {
 
 
 locals {
-  bearer_token = nonsensitive(base64decode(data.kubernetes_secret.oauth2_proxy_token.data["token"]))
+  bearer_token = base64decode(nonsensitive(data.kubernetes_secret.oauth2_proxy_token.data["token"]))
 }
