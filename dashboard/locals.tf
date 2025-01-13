@@ -202,8 +202,8 @@ ingress:
   # Only used if API capabilities (networking.k8s.io/v1) allow it
   pathType: ImplementationSpecific
   # Used to create an Ingress record.
-      hosts:
-        - ${var.dashboard_ingress}
+  hosts:
+    - ${var.dashboard_ingress}
   # Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   # Warning! The configuration is dependant on your current k8s API version capabilities (networking.k8s.io/v1)
   # extraPaths:
@@ -218,10 +218,10 @@ ingress:
   # annotations:
   #   kubernetes.io/ingress.class: nginx
   #   kubernetes.io/tls-acme: "true"
-      tls: 
-        - secretName: wildcard-cert
-          hosts:
-          - ${var.dashboard_ingress}
+  tls: 
+    - secretName: wildcard-cert
+      hosts:
+      - ${var.dashboard_ingress}
 
 resources: {}
   # limits:
