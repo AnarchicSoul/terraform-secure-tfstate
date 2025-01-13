@@ -1,0 +1,11 @@
+## Enable or disable a feature should be set in variable.tf
+## Change or remove and type secure default password should be set in variable.tf
+## Show password in output should be set in output.tf with sensitive = false
+baseconfig:
+  common:
+    mydomain: "localhost"
+  kubernetes:
+    namespace: "kube-system"
+    kubeconfig: "~/.kube/config"
+  dashboard:
+    dashboard_host: "dashboard"
