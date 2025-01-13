@@ -376,7 +376,7 @@ htpasswdFile:
   enabled: true
   existingSecret: ""
   entries:
-    - superadmin:$2y$05$gY6dgXqjuzFhwdhsiFe7seM9q9Tile4Y3E.CBpAZJffkeiLaC21Gy
+    - "superadmin:$2y$05$gY6dgXqjuzFhwdhsiFe7seM9q9Tile4Y3E.CBpAZJffkeiLaC21Gy"
 
 # Configure the session storage type, between cookie and redis
 sessionStorage:

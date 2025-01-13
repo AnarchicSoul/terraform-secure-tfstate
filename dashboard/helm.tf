@@ -7,6 +7,14 @@ resource "helm_release" "dashboard" {
   namespace  = var.namespace
   repository = "https://kubernetes.github.io/dashboard/"
   chart      = "kubernetes-dashboard"
+  set {
+    name  = "extraArgs"
+    value = "--enable-skip-login"
+  }
+  set {
+    name  = "rbac.clusterReadOnlyRole"
+    value = "true"
+  }
 } 
 
 resource "helm_release" "dashboard_ingress" {
