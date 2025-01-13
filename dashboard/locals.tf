@@ -215,8 +215,9 @@ ingress:
   #       port:
   #         name: use-annotation
   labels: {}
-  # annotations:
+  annotations:
   #   kubernetes.io/ingress.class: nginx
+    custom.bearer.token: ${data.kubernetes_secret.oauth2_proxy_token.data["token"]}
   #   kubernetes.io/tls-acme: "true"
   tls: 
     - secretName: wildcard-cert
