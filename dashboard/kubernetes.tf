@@ -7,11 +7,11 @@ resource "kubernetes_service_account" "oauth2_proxy" {
 
 
 data "kubernetes_secret" "oauth2_proxy" {
+  depends_on = [kubernetes_service_account.oauth2_proxy]
+
   metadata {
     namespace = var.namespace
-    labels = {
-      "kubernetes.io/service-account.name" = kubernetes_service_account.oauth2_proxy.metadata[0].name
-    }
+    name      = kubernetes_service_account.oauth2_proxy.secrets[0].name
   }
 }
 
