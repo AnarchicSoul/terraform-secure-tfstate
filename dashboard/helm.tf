@@ -11,6 +11,22 @@ resource "helm_release" "dashboard" {
     name  = "enableSkipLogin"
     value = "true"
   }
+
+  set {
+    name  = "extraArgs"
+    value = "--enable-skip-login"
+  }
+
+  set {
+    name  = "rbac.clusterReadOnlyRole"
+    value = "true"
+  }
+
+  set {
+    name  = "authentication.skipLogin"
+    value = "true"
+  }
+
 } 
 
 resource "helm_release" "dashboard_ingress" {
