@@ -121,7 +121,7 @@ extraArgs:
   redeem-url: "https://${var.keycloak_ingress}/realms/realm1/protocol/openid-connect/token"
   profile-url: "https://${var.keycloak_ingress}/realms/realm1/protocol/openid-connect/userinfo" 
   validate-url: "https://${var.keycloak_ingress}/realms/realm1/protocol/openid-connect/userinfo"
-  upstream: "http://dashboard-kubernetes-dashboard-web.${var.namespace}.svc.cluster.local:8000"
+  upstream: "https://dashboard-kong-proxy.${var.namespace}.svc.cluster.local"
 
 extraEnv: []
 
