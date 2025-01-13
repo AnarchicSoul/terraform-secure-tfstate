@@ -4,29 +4,15 @@ resource "kubernetes_service_account" "oauth2_proxy" {
     namespace = var.namespace
   }
 }
-resource "kubernetes_secret" "oauth2_proxy_token" {
-  metadata {
-    name      = "oauth2-proxy-token"
-    namespace = var.namespace
-  }
 
-  data = {
-    token = data.kubernetes_service_account.oauth2_proxy.token
-  }
-}
-
-data "kubernetes_service_account" "oauth2_proxy" {
-  depends_on = [kubernetes_service_account.oauth2_proxy]
-  metadata {
-    name      = "oauth2-proxy"
-    namespace = var.namespace
-  }
-}
 
 data "kubernetes_secret" "oauth2_proxy_token" {
-  depends_on = [kubernetes_secret.oauth2_proxy_token]
   metadata {
-    name      = "oauth2-proxy-token"
+    name      = kubernetes_service_account.oauth2_proxy.default_secret_name
     namespace = var.namespace
   }
+}
+
+locals {
+  bearer_token = base64decode(data.kubernetes_secret.oauth2_proxy.data["token"])
 }
