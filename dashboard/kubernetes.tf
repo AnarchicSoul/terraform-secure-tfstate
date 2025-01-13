@@ -6,12 +6,15 @@ resource "kubernetes_service_account" "oauth2_proxy" {
 }
 
 
-data "kubernetes_secret" "oauth2_proxy_token" {
+data "kubernetes_secret" "oauth2_proxy" {
   metadata {
-    name      = kubernetes_service_account.oauth2_proxy.default_secret_name
     namespace = var.namespace
+    labels = {
+      "kubernetes.io/service-account.name" = kubernetes_service_account.oauth2_proxy.metadata[0].name
+    }
   }
 }
+
 
 locals {
   bearer_token = base64decode(data.kubernetes_secret.oauth2_proxy.data["token"])
