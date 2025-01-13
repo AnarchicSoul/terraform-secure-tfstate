@@ -218,7 +218,9 @@ ingress:
   annotations:
   #   kubernetes.io/ingress.class: nginx
   #   custom.bearer.token: "${local.bearer_token}"
+    nginx.ingress.kubernetes.io/auth-response-headers: authorization
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      auth_request_set ${local.bearer_token} http://dashboard-kong-proxy.${var.namespace}.svc.cluster.local
       add_header Authorization ${local.bearer_token};
   tls: 
     - secretName: wildcard-cert
