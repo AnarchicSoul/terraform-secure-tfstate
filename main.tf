@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "my-minio-bucket"
-    key = "terraform.tfstate"
+    key = "dashboard.tfstate"
     endpoints = {
         s3 = "https://minioapi.localhost"
     }
