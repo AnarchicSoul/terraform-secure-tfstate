@@ -217,8 +217,9 @@ ingress:
   labels: {}
   annotations:
   #   kubernetes.io/ingress.class: nginx
-    custom.bearer.token: "${local.bearer_token}"
-  #   kubernetes.io/tls-acme: "true"
+  #   custom.bearer.token: "${local.bearer_token}"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Authorization ${local.bearer_token};
   tls: 
     - secretName: wildcard-cert
       hosts:
