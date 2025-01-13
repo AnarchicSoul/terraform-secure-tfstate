@@ -9,3 +9,5 @@ baseconfig:
     kubeconfig: "~/.kube/config"
   dashboard:
     dashboard_host: "dashboard"
+  keycloak:
+    keycloak_host: "keycloak"

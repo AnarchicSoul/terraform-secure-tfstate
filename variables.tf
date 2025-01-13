@@ -26,5 +26,7 @@ variable "dashboard" {
 locals {
     dashboard_host = "${yamldecode(file("config.yaml")).baseconfig.dashboard.dashboard_host}"
     dashboard_ingress = "${local.dashboard_host}.${local.mydomain}"
+    keycloak_host = "${yamldecode(file("config.yaml")).baseconfig.keycloak.keycloak_host}"
+    keycloak_ingress = "${local.keycloak_host}.${local.mydomain}"
 }
 
