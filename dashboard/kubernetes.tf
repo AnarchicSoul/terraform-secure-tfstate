@@ -14,11 +14,3 @@ resource "kubernetes_secret" "oauth2_proxy_token" {
     token = data.kubernetes_service_account.oauth2_proxy.token
   }
 }
-
-data "kubernetes_secret" "oauth2_proxy_token" {
-  depends_on = [kubernetes_secret.oauth2_proxy_token]
-  metadata {
-    name      = "oauth2-proxy-token"
-    namespace = var.namespace
-  }
-}
