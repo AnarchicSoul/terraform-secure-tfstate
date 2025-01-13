@@ -341,7 +341,7 @@ initContainers:
   # creates a role binding to get, list, watch, the redis master pod
   # if service account is enabled
   waitForRedis:
-    enabled: true
+    enabled: false
     image:
       repository: "alpine"
       tag: "latest"
@@ -381,7 +381,7 @@ htpasswdFile:
 # Configure the session storage type, between cookie and redis
 sessionStorage:
   # Can be one of the supported session storage cookie|redis
-  type: redis
+  type: cookie
   redis:
     # Name of the Kubernetes secret containing the redis & redis sentinel password values (see also `sessionStorage.redis.passwordKey`)
     existingSecret: "redis"
